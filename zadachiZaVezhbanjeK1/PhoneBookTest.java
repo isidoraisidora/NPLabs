@@ -6,20 +6,13 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 class DuplicateNumberException extends Exception{
-    private String number;
-
-    public DuplicateNumberException(String number) {
-        this.number = number;
-    }
-
-    public void init(){
-        System.out.println("Duplicate number: " + number);
+    public DuplicateNumberException() {
     }
 }
 
 class Contact{
-    private String name;
-    private String number;
+    private final String name;
+    private final String number;
 
     public Contact(String name, String number) {
         this.name = name;
@@ -50,7 +43,7 @@ class PhoneBook{
     public void addContact(String name, String number) throws DuplicateNumberException {
         Contact c = new Contact(name, number);
         if(contactList.contains(c)){
-            throw new DuplicateNumberException(number);
+            throw new DuplicateNumberException();
         }
         contactList.add(c);
     }
